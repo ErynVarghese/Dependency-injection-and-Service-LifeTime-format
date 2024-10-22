@@ -1,0 +1,13 @@
+﻿@model To_Do_List_App.Models.ToDoItem
+
+<h2>Add Task</h2>
+
+<form asp-action="AddTask" method="post" class="mb-3">
+    <div class="form-group">
+        <label for="Task">Task</label>
+        <input type="text" name="Task" id="Task" class="form-control" placeholder="Enter a new task" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Task</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary">Back to Task List</a>

@@ -1,10 +1,13 @@
-﻿namespace To_Do_List_App.Services
+﻿using System.Diagnostics;
+using To_Do_List_App.Interfaces;
+
+namespace To_Do_List_App.Services
 {
     public class TaskLogger : ITaskLogger
     {
-        public void Log (string message)
+        public void WriteMessage (string message)
         {
-            Console.WriteLine($"Task Logged: {message}");
+            Debug.WriteLine($"Task Logged: {message}");
         }
     }
 }
