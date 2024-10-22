@@ -15,8 +15,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-
-builder.Services.AddSingleton<ITodoService, TodoService>();
+// can't use singleton because DbContext is registered to use scoped lifetime
+builder.Services.AddScoped<ITodoService, TodoService>();
 
 builder.Services.AddTransient<ITaskLogger, TaskLogger>();
 

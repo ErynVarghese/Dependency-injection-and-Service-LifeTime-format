@@ -1,31 +1,44 @@
 ﻿using To_Do_List_App.Interfaces;
 using To_Do_List_App.Models;
+using System.Collections.Generic;
+using System.Linq;
+using To_Do_List_App.Data;
 
 namespace To_Do_List_App.Services
 {
     public class TodoService : ITodoService
     {
-        private List<ToDoItem> _tasks =  new List<ToDoItem>();
+        
+        private readonly ApplicationDbContext _context;
+
+        public TodoService(ApplicationDbContext context)
+        {
+            _context = context;
+        }
 
         public List<ToDoItem> GetTasks()
         {
-            return _tasks;
+           
+            return _context.ToDoItems.ToList();
+
         }
 
 
         public void AddTask(ToDoItem task)
         {
-            task.Id = _tasks.Count + 1;
-            _tasks.Add(task);
+            _context.ToDoItems.Add(task);
+            _context.SaveChanges();
+
         }
 
         public void MarkComplete(int id)
         {
-            var task = _tasks.FirstOrDefault(x => x.Id == id);
+            var task = _context.ToDoItems.FirstOrDefault(x => x.Id == id);
 
             if (task != null)
             {
                 task.IsComplete = true;
+                _context.SaveChanges();
             }
         }
     }
