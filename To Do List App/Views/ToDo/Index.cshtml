@@ -2,7 +2,7 @@
 
 <h2>@ViewBag.AppName</h2>
 
-<a asp-action="AddTask" class="btn btn-success mb-3">Add New Task</a>
+<a asp-action="AddTask" class="btn btn-warning mb-3">Add New Task</a>
 
 <ul class="list-group">
     @foreach (var task in Model)
@@ -11,7 +11,7 @@
             @task.Task - @task.IsComplete
             @if (!task.IsComplete)
             {
-                <a asp-action="MarkComplete" asp-route-id="@task.Id" class="btn btn-sm btn-primary">Mark Complete</a>
+                <a asp-action="MarkComplete" asp-route-id="@task.Id" class="btn btn-sm btn-secondary">Mark Complete</a>
             }
         </li>
     }

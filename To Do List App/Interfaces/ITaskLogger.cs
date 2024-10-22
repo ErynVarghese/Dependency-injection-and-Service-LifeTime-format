@@ -4,4 +4,6 @@
     {
         void WriteMessage(string message);
     }
+
 }
+
